@@ -134,7 +134,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross domain</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a>
+						<a href="/tags/Angular/" style="font-size: 20px;">Angular</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross domain</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a>
 					</div>
 				</section>
 				
@@ -185,6 +185,77 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-脏值检测" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/13/脏值检测/" class="article-date">
+  	<time datetime="2016-02-13T00:02:00.000Z" itemprop="datePublished">2016-02-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/13/脏值检测/">
+        Angular中的脏值检测
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>实施页面的热更新</p>
+<h1 id="脏值检测的原理"><a href="#脏值检测的原理" class="headerlink" title="脏值检测的原理"></a>脏值检测的原理</h1><ol>
+<li>每一次在界面上,绑定一个数据的时候,就会把对应的属性添加到一个$watchList的数组当中。而放在list当中每一属性都会被$watch()监听到.</li>
+<li>界面一直处在监听事件状态,只要发生了事件,就会触发$degist()方法,$degist()会遍历$watchList数组,询问每一个属性有没有被更改过,再去查看$scope有没有更新,如果有更新,会再去循环一遍$watchList</li>
+<li>遍历结束,所有的没有问题,会调用$apply() ,更新DOM</li>
+</ol>
+<p><strong>脏值检测的定义:</strong> $degist()遍历$watchList数组.</p>
+<p><img src="/assets/blogImg/Dirty value detection.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/脏值检测/">脏值检测</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-跨域" class="article article-type-post" itemscope itemprop="blogPost">
   

@@ -3,21 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Angular | AinyFeng</title>
+  <title>Angular中的脏值检测 | AinyFeng</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="胸藏文墨怀若谷,腹有诗书气自华">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AinyFeng">
-<meta property="og:url" content="http://yoursite.com/tags/Angular/index.html">
+  <meta name="description" content="angular的内部处理的热更新原理">
+<meta name="keywords" content="Angular">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular中的脏值检测">
+<meta property="og:url" content="http://yoursite.com/2016/02/13/脏值检测/index.html">
 <meta property="og:site_name" content="AinyFeng">
-<meta property="og:description" content="胸藏文墨怀若谷,腹有诗书气自华">
+<meta property="og:description" content="angular的内部处理的热更新原理">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/Dirty%20value%20detection.jpg">
+<meta property="og:updated_time" content="2017-05-07T11:52:30.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AinyFeng">
-<meta name="twitter:description" content="胸藏文墨怀若谷,腹有诗书气自华">
+<meta name="twitter:title" content="Angular中的脏值检测">
+<meta name="twitter:description" content="angular的内部处理的热更新原理">
+<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/Dirty%20value%20detection.jpg">
   
     <link rel="alternative" href="/atom.xml" title="AinyFeng" type="application/atom+xml">
   
@@ -184,100 +188,86 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-脏值检测" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/02/13/脏值检测/" class="archive-article-date">
-  	<time datetime="2016-02-13T00:02:00.000Z" itemprop="datePublished">Feb 13</time>
+    <div class="article-meta">
+      <a href="/2016/02/13/脏值检测/" class="article-date">
+  	<time datetime="2016-02-13T00:02:00.000Z" itemprop="datePublished">2016-02-13</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/13/脏值检测/">
-        Angular中的脏值检测
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-      </a>
+  
+    <h1 class="article-title" itemprop="name">
+      Angular中的脏值检测
+      
     </h1>
   
 
-        <div class="article-info info-on-left">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/脏值检测/">脏值检测</a>
 	</div>
 
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/02/06/angularJS指令作用域/" class="archive-article-date">
-  	<time datetime="2016-02-06T13:36:00.000Z" itemprop="datePublished">Feb 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/06/angularJS指令作用域/">
-        AngularJS的指令作用域
         
-      </a>
-    </h1>
-  
-
-        <div class="article-info info-on-left">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/">Angular</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Angular/">Angular</a>
-	</div>
-
-
-          
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>实施页面的热更新</p>
+<h1 id="脏值检测的原理"><a href="#脏值检测的原理" class="headerlink" title="脏值检测的原理"></a>脏值检测的原理</h1><ol>
+<li>每一次在界面上,绑定一个数据的时候,就会把对应的属性添加到一个$watchList的数组当中。而放在list当中每一属性都会被$watch()监听到.</li>
+<li>界面一直处在监听事件状态,只要发生了事件,就会触发$degist()方法,$degist()会遍历$watchList数组,询问每一个属性有没有被更改过,再去查看$scope有没有更新,如果有更新,会再去循环一遍$watchList</li>
+<li>遍历结束,所有的没有问题,会调用$apply() ,更新DOM</li>
+</ol>
+<p><strong>脏值检测的定义:</strong> $degist()遍历$watchList数组.</p>
+<p><img src="/assets/blogImg/Dirty value detection.jpg" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/12/跨域/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          跨域
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
 
 </div>
       <footer id="footer">
@@ -303,9 +293,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
