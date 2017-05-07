@@ -10,13 +10,13 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="跨域的基本概念">
-<meta name="keywords" content="跨域">
+<meta name="keywords" content="Cross domain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域">
 <meta property="og:url" content="http://yoursite.com/2016/02/12/跨域/index.html">
 <meta property="og:site_name" content="AinyFeng">
 <meta property="og:description" content="跨域的基本概念">
-<meta property="og:updated_time" content="2017-05-07T07:06:31.961Z">
+<meta property="og:updated_time" content="2017-05-07T07:15:32.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域">
 <meta name="twitter:description" content="跨域的基本概念">
@@ -136,7 +136,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
+						<a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross domain</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a>
 					</div>
 				</section>
 				
@@ -213,12 +213,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cross-domain/">Cross domain</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Cross-domain/">Cross domain</a>
+	<a class="article-category-link" href="/categories/跨域/">跨域</a>
 	</div>
 
 
@@ -250,17 +250,14 @@
 <p>借助标签的src属性进行数据请求.</p>
 </blockquote>
 <ol>
-<li><p>使用src,请求数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;http://datainfo.duapp.com/shopdata/getGoods.php?callback=callback&quot;&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在本地声明一个方法<br>function callback(args){<br>   conosle.log(args);<br>}</p>
-</li>
-<li><p>要在服务端要处理跨域</p>
-<pre><code>$res  = $_GET[&apos;callback&apos;];
+<li>使用src,请求数据</li>
+</ol>
+<script src="http://datainfo.duapp.com/shopdata/getGoods.php?callback=callback">
 
-echo $res.&apos;(&apos;我是服务器的数据&apos;)&apos;;
-//注意:在php当中&quot;.&quot;相当于&quot;+&quot;连字符;
-</code></pre><p>如果服务器返回的是js代码,那么浏览器就会直接执行js代码,借助浏览器的特性来实现跨域.</p>
+<ol>
+<li>在本地声明一个方法<br>function callback(args){<br>   conosle.log(args);<br>}</li>
+<li><p>要在服务端要处理跨域<br> $res  = $_GET[‘callback’];</p>
+<p> echo $res.’(‘我是服务器的数据’)’;<br> //注意:在php当中”.”相当于”+”连字符;<br>如果服务器返回的是js代码,那么浏览器就会直接执行js代码,借助浏览器的特性来实现跨域.</p>
 </li>
 </ol>
 <p><strong>AngularJS的跨域的内部实现过程:</strong></p>
@@ -273,24 +270,17 @@ echo $res.&apos;(&apos;我是服务器的数据&apos;)&apos;;
 </ul>
 <p><strong>8. 通过src实现跨域方案</strong></p>
 <ol>
-<li>在前端定义一个function,<br>function fn(res){<pre><code>alert(res);
-</code></pre>}</li>
-<li><p>通过<figure class="highlight plain"><figcaption><span>src=> ```的属性向服务器发送一个请求,在发送请求过程当中,把function的名称作为参数传递给服务器.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">  &lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<li>在前端定义一个function,<br>function fn(res){<br> alert(res);<br>}</li>
+<li><p>通过<figure class="highlight plain"><figcaption><span>src=>```的属性向服务器发送一个请求,在发送请求过程当中,把function的名称作为参数传递给服务器.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 </li>
 <li><p>服务器接收callback值.$fn = $_GET[‘callback’];</p>
 </li>
 <li><p>在返回时,要在接收参数的这个后面拼接一个括号.如果想要传递数据,就把数据放在括号当中, echo $fn.’(‘axf123’)’;</p>
 </li>
-<li><p>就会执行前端定义的function,</p>
-<pre><code>fn(&quot;hello&quot;);
-&lt;script&gt;
-function fn(res) {
-alert(res);
-}
-&lt;/script&gt;
-</code></pre><p>使用src内容请求是不会存在跨域问题,在服务器端,返回js语句是可以直接运行.<code>&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</code></p>
+<li>就会执行前端定义的function,<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fn(&quot;hello&quot;);</div><div class="line">&lt;script&gt;</div><div class="line">function fn(res) &#123;</div><div class="line">alert(res);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>使用src内容请求是不会存在跨域问题,在服务器端,返回js语句是可以直接运行.<br><code>&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</code></p>
 <p>在服务器端处理,服务返回的js都会被浏览器解析执行<br>php文件中的内容:<br> &lt;?php<br> $fn = $_GET[‘callback’];<br> ehco $fn.’(‘axf123’)’;</p>
 <p><strong>知识点的扩展:</strong></p>
 <p><strong>1. jsonP与json有什么关系?</strong><br>没有任何关系(就如同雷锋和雷峰塔一样的关系!哈哈!!!)</p>
@@ -303,7 +293,7 @@ alert(res);
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;ajax请求受同源策略的影响,不允许进行跨域请求,而script标签中的src属性中的链接却可以访问跨域的js脚本,利用这个特性,服务端不再返回JSON格式的数据,而是返回一段调用某个函数的js代码,在src中进行了调用,这样就实现了跨域.</p>
 <p><strong>5. angularJS和jQuery最大的区别在哪?</strong></p>
 <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;angularJS是你事先在心中构建好整个页面,然后用变量或者占位符来表示数据,数据来了,直接填充哦就可以了,而jquery则是动态的修改dom元素,如添加修改dom标签等,设计思想不一样.</p>
-
+</script>
       
     </div>
     
@@ -312,11 +302,11 @@ alert(res);
     
 <nav id="article-nav">
   
-    <a href="/2016/02/06/angularJS指令作用域/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/06/canvas-红包图片效果/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          AngularJS的指令作用域
+          canvas学习之图片效果
         
       </div>
     </a>
