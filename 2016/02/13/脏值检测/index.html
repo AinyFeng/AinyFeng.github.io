@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="AinyFeng">
 <meta property="og:description" content="angular的内部处理的热更新原理">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/Dirty%20value%20detection.jpg">
-<meta property="og:updated_time" content="2017-05-07T11:59:18.090Z">
+<meta property="og:updated_time" content="2017-05-07T12:03:29.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular中的脏值检测">
 <meta name="twitter:description" content="angular的内部处理的热更新原理">
@@ -231,8 +231,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>实施页面的热更新</p>
+        <p>脏值检测的简单分析<br><a id="more"></a><br>实施页面的热更新</p>
 <h1 id="脏值检测的原理"><a href="#脏值检测的原理" class="headerlink" title="脏值检测的原理"></a>脏值检测的原理</h1><ol>
 <li>每一次在界面上,绑定一个数据的时候,就会把对应的属性添加到一个$watchList的数组当中。而放在list当中每一属性都会被$watch()监听到.</li>
 <li>界面一直处在监听事件状态,只要发生了事件,就会触发$degist()方法,$degist()会遍历$watchList数组,询问每一个属性有没有被更改过,再去查看$scope有没有更新,如果有更新,会再去循环一遍$watchList</li>
