@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>跨域 | AinyFeng</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="跨域的基本概念">
+<meta name="keywords" content="跨域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域">
+<meta property="og:url" content="http://yoursite.com/2016/02/12/跨域/index.html">
+<meta property="og:site_name" content="AinyFeng">
+<meta property="og:description" content="跨域的基本概念">
+<meta property="og:updated_time" content="2017-05-07T07:06:31.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域">
+<meta name="twitter:description" content="跨域的基本概念">
+  
+    <link rel="alternative" href="/atom.xml" title="AinyFeng" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/TiddlyWiki.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://img06.tooopen.com/images/20170304/tooopen_sy_200486614796.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">安小凤</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">钟情于前端的初学者</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about/">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Angular/" style="font-size: 10px;">Angular</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">安小凤</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img06.tooopen.com/images/20170304/tooopen_sy_200486614796.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">安小凤</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">钟情于前端的初学者</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about/">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-跨域" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/12/跨域/" class="article-date">
+  	<time datetime="2016-02-12T02:36:00.000Z" itemprop="datePublished">2016-02-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      跨域
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Cross-domain/">Cross domain</a>
+	</div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>跨域及其相关概念<br><a id="more"></a><br>跨域的这些知识你知道吗?</p>
+<h3 id="一-跨域的相关的概念"><a href="#一-跨域的相关的概念" class="headerlink" title="一.跨域的相关的概念"></a>一.跨域的相关的概念</h3><p><strong>1. 什么是跨域?</strong> 不同域名之间进行访问</p>
+<p><strong>2.什么是同源策略?</strong></p>
+<p>协议:主机地址,端口号都要一致的,称之为同源策略.</p>
+<p><a href="http://localhost:8080/index" target="_blank" rel="external">http://localhost:8080/index</a></p>
+<p><a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a></p>
+<p><a href="http://www.sina.cn" target="_blank" rel="external">http://www.sina.cn</a></p>
+<p>以上三种均为非同源策略.</p>
+<p><strong>3. 是什么造成了跨域?</strong> 是浏览器造成的跨域</p>
+<p><strong>4. 为什么会有跨域?</strong> 为了数据的安全性,同时是为了保证用户访问的安全.</p>
+<p><strong>5. 你在开发当中是如何解决跨域问题?</strong><br>方法两种:</p>
+<p>① jsonP解决跨域(原理使用script当中的src方式进行数据的请求.)</p>
+<p>② 往浏览器当中安装插件(但是也不安全)</p>
+<p><strong>6. jsonp和Ajax有关系吗?</strong> 没有关系</p>
+<p>Ajax它是javascript提供的方法,进行数据的请求.使用它请求跨域时,跨域时拿不到数据.</p>
+<p>而jsonp是一种解决跨域的一种方案.</p>
+<p><strong>7.jsonp原理是怎么做的?</strong></p>
+<blockquote>
+<p>借助标签的src属性进行数据请求.</p>
+</blockquote>
+<ol>
+<li><p>使用src,请求数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;http://datainfo.duapp.com/shopdata/getGoods.php?callback=callback&quot;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在本地声明一个方法<br>function callback(args){<br>   conosle.log(args);<br>}</p>
+</li>
+<li><p>要在服务端要处理跨域</p>
+<pre><code>$res  = $_GET[&apos;callback&apos;];
+
+echo $res.&apos;(&apos;我是服务器的数据&apos;)&apos;;
+//注意:在php当中&quot;.&quot;相当于&quot;+&quot;连字符;
+</code></pre><p>如果服务器返回的是js代码,那么浏览器就会直接执行js代码,借助浏览器的特性来实现跨域.</p>
+</li>
+</ol>
+<p><strong>AngularJS的跨域的内部实现过程:</strong></p>
+<ul>
+<li>帮你创建一个script标签,src=url</li>
+<li>创建声明了一个函数function  angular.callbacks._0(args){<br>  args<br>}<ul>
+<li>服务器接收</li>
+</ul>
+</li>
+</ul>
+<p><strong>8. 通过src实现跨域方案</strong></p>
+<ol>
+<li>在前端定义一个function,<br>function fn(res){<pre><code>alert(res);
+</code></pre>}</li>
+<li><p>通过<figure class="highlight plain"><figcaption><span>src=> ```的属性向服务器发送一个请求,在发送请求过程当中,把function的名称作为参数传递给服务器.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">  &lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+</li>
+<li><p>服务器接收callback值.$fn = $_GET[‘callback’];</p>
+</li>
+<li><p>在返回时,要在接收参数的这个后面拼接一个括号.如果想要传递数据,就把数据放在括号当中, echo $fn.’(‘axf123’)’;</p>
+</li>
+<li><p>就会执行前端定义的function,</p>
+<pre><code>fn(&quot;hello&quot;);
+&lt;script&gt;
+function fn(res) {
+alert(res);
+}
+&lt;/script&gt;
+</code></pre><p>使用src内容请求是不会存在跨域问题,在服务器端,返回js语句是可以直接运行.<code>&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</code></p>
+</li>
+</ol>
+<p>在服务器端处理,服务返回的js都会被浏览器解析执行<br>php文件中的内容:<br> &lt;?php<br> $fn = $_GET[‘callback’];<br> ehco $fn.’(‘axf123’)’;</p>
+<p><strong>知识点的扩展:</strong></p>
+<p><strong>1. jsonP与json有什么关系?</strong><br>没有任何关系(就如同雷锋和雷峰塔一样的关系!哈哈!!!)</p>
+<p><strong>2. 什么是json?</strong></p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;JSON是一种轻量级的数据传输格式,被广泛应用于当前web应用中,JSON格式数据的编码和解析基本在所有主流语言中都被实现,所以大部分前后端分离的架构都以JSON格式进行数据的传输.</p>
+<p><strong>3.什么是jsonP?</strong></p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;首先抛出浏览器同源策略这个概念,为了保证用户的安全,现代浏览器是用来同源策略,即不允许访问非同源的页面,在Ajax中,不允许请求非同源的URL就可以了，比如www.a.com下的一个页面，其中的ajax请求是不允许访问 www.b.com/c.php 这样一个页面的。</p>
+<p>然而jsonP就是用来怎么解决跨域请求问题的一种方案.</p>
+<p><strong>4.jsonp的原理是什么?</strong></p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;ajax请求受同源策略的影响,不允许进行跨域请求,而script标签中的src属性中的链接却可以访问跨域的js脚本,利用这个特性,服务端不再返回JSON格式的数据,而是返回一段调用某个函数的js代码,在src中进行了调用,这样就实现了跨域.</p>
+<p><strong>5. angularJS和jQuery最大的区别在哪?</strong></p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;angularJS是你事先在心中构建好整个页面,然后用变量或者占位符来表示数据,数据来了,直接填充哦就可以了,而jquery则是动态的修改dom元素,如添加修改dom标签等,设计思想不一样.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/06/angularJS指令作用域/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          AngularJS的指令作用域
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2016 安小凤
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">carrotming</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
