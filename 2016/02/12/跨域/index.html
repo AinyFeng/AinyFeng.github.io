@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/02/12/跨域/index.html">
 <meta property="og:site_name" content="AinyFeng">
 <meta property="og:description" content="跨域的基本概念">
-<meta property="og:updated_time" content="2017-05-07T07:15:32.746Z">
+<meta property="og:updated_time" content="2017-05-07T16:21:37.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域">
 <meta name="twitter:description" content="跨域的基本概念">
@@ -280,7 +280,7 @@
 <li>就会执行前端定义的function,<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fn(&quot;hello&quot;);</div><div class="line">&lt;script&gt;</div><div class="line">function fn(res) &#123;</div><div class="line">alert(res);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>使用src内容请求是不会存在跨域问题,在服务器端,返回js语句是可以直接运行.<br><code>&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</code></p>
+<p>使用src内容请求是不会存在跨域问题,在服务器端,返回js语句是可以直接运行.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;script src=&quot;get.php?callback=fn&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <p>在服务器端处理,服务返回的js都会被浏览器解析执行<br>php文件中的内容:<br> &lt;?php<br> $fn = $_GET[‘callback’];<br> ehco $fn.’(‘axf123’)’;</p>
 <p><strong>知识点的扩展:</strong></p>
 <p><strong>1. jsonP与json有什么关系?</strong><br>没有任何关系(就如同雷锋和雷峰塔一样的关系!哈哈!!!)</p>
@@ -302,11 +302,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/06/angularJS指令作用域/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/06/canvas-红包图片效果/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          AngularJS的指令作用域
+          canvas学习之图片效果
         
       </div>
     </a>
@@ -335,7 +335,7 @@
         &copy; 2016 安小凤
       </div>
         <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">carrotming</a>
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">AinyFeng</a>
         </div>
     </div>
   </div>
